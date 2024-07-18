@@ -1,37 +1,55 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{
-    //Variables
-	// int: 1,2,3... -1, -2, -3...
-	// float: 1,3   4,8   3   5 
-    public int numeroDeLlantas;
-    public int numeroDePuertas;
-    public float cantidadDeGasolina;
-
+public class Player : MonoBehaviour {
+	//Variables
+	public int numeroDeLlantas;
+	public int numeroDePuertas;
+	public float cantidadDeGasolina;
+	public float moveH;
+	public float moveTotal;
+	public float speed;
+	
 	private void Start()
 	{
-		//numeroDeLlantas = 4;
-		//numeroDePuertas = 5;
-		//cantidadDeGasolina = 1.5f;
+		Debug.Log("Normal message");
+		Debug.LogWarning("Warning message");
+		Debug.LogError("Error message");
 	}
 
+	private int Suma()
+	{
+		numeroDeLlantas = 4;
+		numeroDePuertas = 5;
+		cantidadDeGasolina = 1.5f;
 
-	//IDE VISUAL STUDIO
-	//C#
+		return numeroDeLlantas + numeroDePuertas;
+	}
 
+	private void Update()
+	{
+		moveH = Input.GetAxis("Horizontal");
+		moveTotal = moveH * speed * Time.deltaTime;
+		transform.Translate(moveTotal, 0, 0);
+	}
 
-	//// Start is called before the first frame update
-	//void Start()
-	//{
-	//    //Change color to orange
-	//}
+	public static Action OnLeftArrowPressed;
 
-	//// Update is called once per frame
-	//void Update()
-	//{
+	private void OnEnable()
+	{
+		OnLeftArrowPressed += MovePlayer;
+	}
 
-	//}
+	private void MovePlayer()
+	{
+		Debug.Log("Moving the player");
+	}
+
+	public void RaisingOnMovePlayer()
+	{
+		OnLeftArrowPressed?.Invoke();
+	}
+
 }
