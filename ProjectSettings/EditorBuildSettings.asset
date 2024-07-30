@@ -17,4 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneMP3.unity
     guid: 47c8f09767cb123438769e3c2fe20f24
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 6928e41fcedce624c933bc8b3d667c12,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 44a657339f4a70a41b3e690aed2c1d87,
+      type: 2}
